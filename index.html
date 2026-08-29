@@ -466,6 +466,71 @@ form.addEventListener("submit", async function (event) {
             menuIcon.classList.add("fa-bars");
         }
     });
+
+    const projectCards = document.querySelectorAll('.project-card');
+
+const projectObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add('show');
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+
+/* Observe every project card */
+
+projectCards.forEach((card) => {
+
+    projectObserver.observe(card);
+
+});
+
+
+/* =========================
+   SECTION TITLE SCROLL ANIMATION
+   ========================= */
+
+const sectionTitle = document.querySelector('.section-title');
+
+const titleObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add('show-title');
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.5
+    }
+);
+
+
+/* Observe title */
+
+if (sectionTitle) {
+
+    titleObserver.observe(sectionTitle);
+
+}
 </script>
 
 </body>
